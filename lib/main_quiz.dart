@@ -10,14 +10,32 @@ class HomeQuiz extends StatefulWidget {
 class _HomeQuizState extends State<HomeQuiz> {
   List<Icon> scoreKeeper = [];
   QuestionBrain questBrain = QuestionBrain();
-  int currentQuestion = 1;
 
   void checkScore({bool pickAnswer}) {
     bool correctAnswer = questBrain.getAnswer();
 
     if (questBrain.getIsFinish()) {
-      Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.")
-          .show();
+      Alert(
+        context: context,
+        type: AlertType.info,
+        title: "Finish",
+        desc: "All question already answer.",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "FINISH",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () {
+              scoreKeeper = [];
+              questBrain.reset();
+              Navigator.pop(context);
+              setState(() {});
+            },
+            width: 120,
+          )
+        ],
+      ).show();
     } else {
       if (correctAnswer == pickAnswer) {
         scoreKeeper.add(Icon(

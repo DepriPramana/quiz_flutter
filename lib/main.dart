@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main_quiz.dart';
+import 'splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter application quiz",
-      home: HomeQuiz(),
+      home: SplashscreenPage(),
     );
   }
 }
